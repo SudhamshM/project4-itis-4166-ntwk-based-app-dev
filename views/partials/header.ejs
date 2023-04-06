@@ -40,19 +40,20 @@
         </nav>
     </header>
     <main>
+        <div class="container mt-3 w-75">
         <% if(errorMessages.length > 0) {%>
             <% errorMessages.forEach(message=>{%>
-                <div class='error'>
+                <div class='alert alert-warning' role="alert">
                     <%=message%>
                 </div>
                 <%});%>
                     <%}%>
         
-                        <% if(successMessages.length > 0) {%>
-        
-                            <% successMessages.forEach(message=>{%>
-                                <div class='success'>
-                                    <%=message%>
-                                </div>
-                                <%});%>
-                                    <%}%>
+        <% if(successMessages.length > 0) {%>
+            <% successMessages.forEach(message=>{%>
+                <div class='alert alert-success' role="alert">
+                <%=message%>
+                </div>
+            <%});%>
+        <%}%>
+        </div>
