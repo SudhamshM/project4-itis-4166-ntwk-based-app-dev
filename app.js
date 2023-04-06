@@ -1,9 +1,12 @@
 // App for Project 3
 const express = require('express');
 const morgan = require('morgan');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
+
 const eventRoutes = require('./routes/eventRoutes');
 const mainRoutes = require('./routes/mainRoutes');
+const userRoutes = require('./routes/userRoutes');
+
 require('dotenv').config()
 const mongoose = require('mongoose')
 
@@ -47,6 +50,7 @@ app.get('/', (req, res) =>
 
 app.use('/', mainRoutes);
 app.use('/events', eventRoutes)
+app.use('/users', userRoutes);
 
 
 // handling 404 errors
