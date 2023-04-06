@@ -1,4 +1,4 @@
-const model = require("../models/user");
+const User = require("../models/user");
 const Event = require("../models/meetupEvent");
 
 exports.new = (req, res) => 
@@ -8,7 +8,7 @@ exports.new = (req, res) =>
 
 exports.create = (req, res, next) => 
 {
-    let user = new model(req.body);
+    let user = new User(req.body);
     user.save()
     .then((user) => res.redirect("/users/login"))
       .catch((err) => 
@@ -37,14 +37,14 @@ exports.getUserLogin = (req, res, next) =>
 exports.login = (req, res, next) => 
 {
     let email = req.body.email;
-        let password = req.body.password;
-        model
+    let password = req.body.password;
+        User
           .findOne({ email: email })
           .then((user) => {
             if (!user) 
             {
               console.log("wrong email address");
-              req.flash("error", "wrong email address");
+              req.flash("error", "Email address not found.");
               res.redirect("/users/login");
             }
             else 
@@ -53,12 +53,12 @@ exports.login = (req, res, next) =>
                 if (result) 
                 {
                   req.session.user = user._id;
-                  req.flash("success", "You have successfully logged in");
+                  req.flash("success", "You have successfully logged in!");
                   res.redirect("/users/profile");
                 }
                 else
                 {
-                  req.flash("error", "wrong password");
+                  req.flash("error", "Password does not match records.");
                   res.redirect("/users/login");
                 }
               });
@@ -71,7 +71,7 @@ exports.profile = (req, res, next) =>
 {
   let id = req.session.user;
   // using all promises and order doesn't matter instead of chaining
-  Promise.all([model.findById(id), Event.find({ author: id })])
+  Promise.all([User.findById(id), Event.find({ author: id })])
     .then((results) => 
     {
       const [user, stories] = results;
@@ -84,7 +84,13 @@ exports.logout = (req, res, next) =>
 {
   req.session.destroy((err) => 
   {
-    if (err) return next(err);
-    else res.redirect("/");
+    if (err) 
+    {
+      return next(err);
+    }
+    else 
+    {
+      res.redirect("/");
+    }
   });
 };
