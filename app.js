@@ -8,7 +8,10 @@ const mainRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 require('dotenv').config()
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 
 
 // create application
@@ -34,6 +37,28 @@ mongoose.connect(url)
         
     )
 .catch(err => console.log(err.message))
+
+//mount middlware
+app.use(
+    session({
+        secret: "jpoj02ghiewqpqig2Alh4",
+        resave: false,
+        saveUninitialized: false,
+        store: new MongoStore({mongoUrl: 'mongodb://0.0.0.0:27017/demos'}),
+        cookie: {maxAge: 60 * 60 * 1000}
+        })
+);
+app.use(flash());
+
+app.use((req, res, next) => 
+{
+    //console.log(req.session);
+    res.locals.user = req.session.user || null;
+    res.locals.errorMessages = req.flash('error');
+    res.locals.successMessages = req.flash('success');
+    next();
+});
+
 
 // mount middleware
 app.use(express.static('public'));
