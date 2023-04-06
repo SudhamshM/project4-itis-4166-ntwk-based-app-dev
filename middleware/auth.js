@@ -10,7 +10,7 @@ exports.isGuest = (req, res, next) =>
     else
     {
         req.flash("error", "You're already logged in.");
-        // return res.redirect("/users/profile");
+        return res.redirect("/users/profile");
     }
 }
 
@@ -24,7 +24,7 @@ exports.isLoggedIn = (req, res, next) =>
     else
     {
         req.flash("error", "You're not logged in.");
-        // return res.redirect("/users/login");
+        return res.redirect("/users/login");
     }
 }
 
@@ -51,7 +51,7 @@ exports.isAuthor = (req, res, next) =>
         }
         else
         {
-            let err = new Error('Cannot find a story with id.');
+            let err = new Error('Cannot find a Meetup with id.');
             err.status = 404;
             next(err);
         }
