@@ -12,5 +12,11 @@
            <p>No movies in this genre.</p>
        <% } %>
        <% }) %>
+    <% if (!Object.keys(eventObject).length) { %>
+        <h2 class="text-center">No movies available currently!</h2> 
+        <h3 class="text-center">Create your own
+            movie meetup <a href="/events/new" class="text-decoration-none">here!</a></h3>
+        
+    <% } %>
 </div>
 <%- include('../partials/footer.ejs') %>
