@@ -1,4 +1,4 @@
-// App for Project 3
+// App for Project 4
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
@@ -38,7 +38,7 @@ mongoose.connect(url)
     )
 .catch(err => console.log(err.message))
 
-//mount middlware
+//mount middleware
 app.use(
     session({
         secret: "jpoj02ghiewqpqig2Alh4",
@@ -50,9 +50,9 @@ app.use(
 );
 app.use(flash());
 
+// using sessions and flash messaging
 app.use((req, res, next) => 
 {
-    //console.log(req.session);
     res.locals.user = req.session.user || null;
     res.locals.errorMessages = req.flash('error');
     res.locals.successMessages = req.flash('success');
@@ -66,13 +66,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'))
 
-// set up routes
-app.get('/', (req, res) =>
-{
-    res.render('./main/index');
-});
 
-
+// defining routes
 app.use('/', mainRoutes);
 app.use('/events', eventRoutes)
 app.use('/users', userRoutes);
