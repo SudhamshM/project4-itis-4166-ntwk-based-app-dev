@@ -21,7 +21,7 @@ exports.create = (req, res, next) =>
 
         if (err.code === 11000)
         {
-          req.flash("error", "Email has been used");
+          req.flash("error", "Email has been used.");
           return res.redirect("/users/new");
         }
 
@@ -71,7 +71,7 @@ exports.profile = (req, res, next) =>
 {
   let id = req.session.user;
   // using all promises and order doesn't matter instead of chaining
-  Promise.all([User.findById(id), Event.find({ author: id })])
+  Promise.all([User.findById(id), Event.find({ hostName: id })])
     .then((results) => 
     {
       const [user, stories] = results;
