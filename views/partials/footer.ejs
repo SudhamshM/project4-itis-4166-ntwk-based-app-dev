@@ -10,12 +10,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkupFooter">
             <div class="navbar-nav">
-                <a class="nav-item nav-link h4" href="/events/new">New Event</a>
-                <a class="nav-item nav-link h4" href="/users/new" title="Coming soon!">Sign Up</a>
-                <a class="nav-item nav-link h4" href="/users/login" title="Coming soon!">Login</a>
-                <a class="nav-item nav-link h4" href="/events">Events</a>
-                <a class="nav-item nav-link h4" href="/about">About</a>
-                <a class="nav-item nav-link h4" href="/contact">Contact</a>
+                <% if (!user) { %>
+                    <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/users/new">Sign Up</a>
+                    <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/users/login">Login</a>
+                <% } else { %>
+                    <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/events/new">New Event</a>
+                <% } %>
+                <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/about">About</a>
+                <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/events">Events</a>
+                <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/contact">Contact</a>
             </div>
         </div>
         <div class="collapse text-light navbar-collapse justify-content-end">
