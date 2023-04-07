@@ -7,7 +7,7 @@ const eventRoutes = require('./routes/eventRoutes');
 const mainRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-require('dotenv').config()
+require('dotenv').config();
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -23,7 +23,7 @@ let host = 'localhost';
 // acquiring db auth credentials from environment variable
 const auth = process.env.AUTH || undefined
 
-let url = 'mongodb+srv://' + auth + '@cluster0.wwc6q82.mongodb.net/nbad-project3?retryWrites=true&w=majority'
+let url = 'mongodb+srv://' + auth + '@cluster0.g4hljaj.mongodb.net/nbad-project4?retryWrites=true&w=majority'
 app.set('view engine', 'ejs');
 
 // connect to mongodb
@@ -44,7 +44,7 @@ app.use(
         secret: "jpoj02ghiewqpqig2Alh4",
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({mongoUrl: 'mongodb://0.0.0.0:27017/demos'}),
+        store: new MongoStore({mongoUrl: 'mongodb+srv://' + auth + '@cluster0.g4hljaj.mongodb.net/nbad-project4?retryWrites=true&w=majority'}),
         cookie: {maxAge: 60 * 60 * 1000}
         })
 );
