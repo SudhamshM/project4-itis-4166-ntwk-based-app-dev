@@ -25,9 +25,12 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/events/new">New Event</a>
-                    <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/users/new" title="Coming soon!">Sign Up</a>
-                    <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/users/login" title="Coming soon!">Login</a>
+                    <% if (!user) { %>
+                        <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/users/new" title="Coming soon!">Sign Up</a>
+                        <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/users/login" title="Coming soon!">Login</a>
+                    <% } else { %>
+                        <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/events/new">New Event</a>
+                    <% } %>
                     <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/about">About</a>
                     <a class="nav-item me-2 h4 text-white-50 text-decoration-none" href="/contact">Contact</a>
                 </div>
