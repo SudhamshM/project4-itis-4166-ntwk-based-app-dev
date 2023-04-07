@@ -7,3 +7,8 @@ div.navbar-nav a:hover
 {
     color: white!important;
 }
+
+.link-hov-line:hover
+{
+    text-decoration: none;
+}
