@@ -74,8 +74,8 @@ exports.profile = (req, res, next) =>
   Promise.all([User.findById(id), Event.find({ hostName: id })])
     .then((results) => 
     {
-      const [user, stories] = results;
-      res.render("./user/profile", { user, stories });
+      const [user, events] = results;
+      res.render("./user/profile", { user, events });
     })
     .catch((err) => next(err));
 };
