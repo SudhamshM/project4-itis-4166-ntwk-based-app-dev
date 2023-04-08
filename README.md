@@ -2,7 +2,7 @@
 
 An extension of Project 3, with a major improvement in adding authentication to the database for logging in, signing up for a new account, and modifying events.
 
-The new iteration is deployed on Render [here!](https://project4moviemeetup.onrender.com/).
+The new iteration is deployed on Render [here!](https://project4moviemeetup.onrender.com/)
 
 Screenshots (zoomed out)
 

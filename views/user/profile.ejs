@@ -1,6 +1,6 @@
 
 <%- include('../partials/header.ejs')%>
-<h1 class="text-center">Profile of <%= user.firstName + ' ' + user.lastName %></h1>
+<h1 class="text-center">Profile of <em><%= user.firstName + ' ' + user.lastName %></em></h1>
 <div class="container w-75 p-5">
     <% if (events.length > 0) { %>
         <h3>Your Meetups</h3>
@@ -31,6 +31,8 @@
                     <% }) %>
             </tbody>
         </table>
+    <% } else { %>
+        <h3>You don't have any Meetups. <a href="/events/new" class="link-hov-line">Create one now!</a></h3>
     <% } %>
     
 </div>
