@@ -1,7 +1,7 @@
 {
-    "name": "project2",
+    "name": "project4",
     "version": "1.0.0",
-    "description": "An Express MVC app for Project 2",
+    "description": "An Express MVC app for Project 4 focusing on Movie Meetup events",
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
