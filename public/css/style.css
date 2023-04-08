@@ -12,3 +12,8 @@ div.navbar-nav a:hover
 {
     text-decoration: none;
 }
+
+.bg-meetup
+{
+    background-color: #f3d405;
+}
