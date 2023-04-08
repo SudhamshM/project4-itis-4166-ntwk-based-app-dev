@@ -1,7 +1,5 @@
 const model = require('../models/meetupEvent');
 
-
-
 // /GET stories: send all stories to user
 
 exports.index = (req, res, next) =>
@@ -53,13 +51,6 @@ exports.create = (req, res, next) =>
 exports.show = (req, res, next) =>
 {
     let id = req.params.id;
-    // check proper id given
-    if (!id.match(/^[0-9a-fA-F]{24}$/))
-    {
-        let err = new Error('Invalid id given: ' + id)
-        err.status = 400;
-        return next(err);
-    }
     model.findById(id).populate('hostName')
     .then(
         (event) => {
@@ -81,13 +72,7 @@ exports.show = (req, res, next) =>
 
 exports.edit = (req, res, next) =>
 {
-    let id = req.params.id;
-    if (!id.match(/^[0-9a-fA-F]{24}$/))
-    {
-        let err = new Error('Invalid id given: ' + id)
-        err.status = 400;
-        return next(err);
-    }
+    let id = req.params.id; 
     model.findById(id)
     .then(
         (event) => {
@@ -110,12 +95,6 @@ exports.update = (req, res, next) =>
 {
     let event = req.body;
     let id = req.params.id;
-    if (!id.match(/^[0-9a-fA-F]{24}$/))
-    {
-        let err = new Error('Invalid id given: ' + id)
-        err.status = 400;
-        return next(err);
-    }
     event.image = "images/" + req.file.filename;
     model.findByIdAndUpdate(id, event, {useFindAndModify: false, runValidators: true})
     .then((event) =>
@@ -146,13 +125,6 @@ exports.update = (req, res, next) =>
 exports.delete = (req, res, next) =>
 {
     let id = req.params.id;
-    if (!id.match(/^[0-9a-fA-F]{24}$/))
-    {
-        let err = new Error('Invalid id given: ' + id)
-        err.status = 400;
-        return next(err);
-    }
-
     model.findOneAndDelete({_id: id})
     .then((event) =>
     {
