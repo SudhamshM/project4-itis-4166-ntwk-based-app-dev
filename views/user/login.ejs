@@ -12,7 +12,14 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" name="password" required minlength="5" id="password" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <div class="row ms-2 me-2">
+          <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+          <div class="col-sm-6 d-flex justify-content-end">
+            <a href="/users/new" class="btn btn-primary">Sign Up</a>
+          </div>
+      </div>
       </form>
     </div>
     <%- include('../partials/footer.ejs')%>
