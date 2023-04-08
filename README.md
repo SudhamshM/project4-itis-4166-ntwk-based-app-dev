@@ -1,8 +1,8 @@
 # Project 4 - ITIS 4166
 
-An extension of Project 3, with a major improvement in adding Users to the database for logging in and signing up.
+An extension of Project 3, with a major improvement in adding authentication to the database for logging in, signing up for a new account, and modifying events.
 
-The new iteration is going to be deployed to Render post-completion.
+The new iteration is deployed on Render [here!](https://project4moviemeetup.onrender.com/).
 
 Screenshots (zoomed out)
 
