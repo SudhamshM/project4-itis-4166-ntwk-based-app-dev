@@ -28,17 +28,17 @@ exports.isLoggedIn = (req, res, next) =>
     }
 }
 
-// check if user is author of a story
+// check if user is creator of event
 exports.isAuthor = (req, res, next) =>
 {
     let id = req.params.id;
     Event.findById(id)
-    .then((story) =>
+    .then((event) =>
     {
-        if (story)
+        if (event)
         {
-            // check the author
-            if (story.author == req.session.user)
+            // check the host
+            if (event.hostName == req.session.user)
             {
                 return next();
             }

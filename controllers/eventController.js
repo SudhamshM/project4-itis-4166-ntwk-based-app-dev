@@ -1,4 +1,4 @@
-const model = require('../models/meetupEvent')
+const model = require('../models/meetupEvent');
 
 
 
@@ -35,7 +35,10 @@ exports.create = (req, res, next) =>
     event.image = "images/" + req.file.filename;
     let eventModel = new model(event);
     eventModel.save()
-    .then((event) => res.render('./event/show', {event}))
+    .then((event) => 
+    {
+        return res.redirect('/events/' + event.id)
+    })
     .catch(err => 
         {
             if (err.name === 'ValidationError')
