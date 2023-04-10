@@ -1,6 +1,6 @@
 # Project 4 - ITIS 4166
 
-An extension of Project 3, with a major improvement in adding authentication to the database for logging in, signing up for a new account, and modifying events.
+An extension of Project 3 to my Movie Meetup website, with a major improvement in adding authentication to the database for logging in, signing up for a new account, and modifying events.
 
 The new iteration is deployed on Render [here!](https://project4moviemeetup.onrender.com/)
 
