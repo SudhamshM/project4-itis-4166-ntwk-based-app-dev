@@ -35,6 +35,7 @@ exports.create = (req, res, next) =>
     eventModel.save()
     .then((event) => 
     {
+        req.flash("success", "Meetup successfully created!")
         return res.redirect('/events/' + event.id)
     })
     .catch(err => 
@@ -101,7 +102,7 @@ exports.update = (req, res, next) =>
     {
         if (event)
         {
-            console.log("updated movie event");
+            req.flash("success", "Meetup successfully updated!")
             return res.redirect('/events/' + id);
         }
         else {
@@ -130,6 +131,7 @@ exports.delete = (req, res, next) =>
     {
         if (event)
         {
+            req.flash("success", "Meetup successfully deleted.")
             return res.redirect('/events');
         }
         else
