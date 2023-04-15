@@ -44,7 +44,8 @@ exports.create = (req, res, next) =>
             {
                 err.status = 400;
             }
-            return next(err);
+            req.flash("error", err.message);
+            return res.redirect('back');
         })
     
 };
@@ -117,7 +118,8 @@ exports.update = (req, res, next) =>
             {
                 err.status = 400;
             }
-            return next(err); 
+            req.flash("error", err.message);
+            return res.redirect(err.message); 
         })
     
    
